@@ -44,6 +44,9 @@ open class WeekView: UIView {
 
     // Determines what offset preservation technique is used when customising the current zoom scale.
     public var zoomOffsetPreservation: ZoomOffsetPreservation = .top
+    
+    // Determines which position is used to show hour label.
+    public var hourLabelPosition: HourLabelPosition = .top
 
     // A DayDate range containing the current days visible on screen
     public var visibleDayDateRange: ClosedRange<DayDate> {
@@ -512,7 +515,15 @@ open class WeekView: UIView {
         // Set position and size constraints for side bar and hour view
         self.hourSideBarHeightConstraint.constant = self.dayScrollView.dayViewCellHeight
         self.sideBarHeightConstraint.constant = sideBarHeight
-        self.sideBarTopBuffer = self.dayScrollView.dayViewVerticalSpacing - (dayViewCellHourHeight / 2)
+        
+        switch hourLabelPosition {
+        case .top:
+            self.sideBarTopBuffer = self.dayScrollView.dayViewVerticalSpacing - (dayViewCellHourHeight / 2)
+        case .middle:
+            self.sideBarTopBuffer = self.dayScrollView.dayViewVerticalSpacing
+        case .bottom:
+            self.sideBarTopBuffer = self.dayScrollView.dayViewVerticalSpacing + (dayViewCellHourHeight / 2)
+        }
 
         // Set correct size and constraints of top bar view
         self.topBarWidthConstraint.constant = dayScrollView.dayCollectionView.contentSize.width
