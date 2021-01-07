@@ -37,6 +37,10 @@ class CalendarViewController: UIViewController, WeekViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let range = dayRangeOf(weekOfYear: getWeek(), for: Date())
+        weekView.showDay(withDate: range.lowerBound)
+        weekView.horizontalScrolling = .finite(number: 7, startDate: range.lowerBound)
+        weekView.visibleDaysInPortraitMode = 3
         weekView.zoomOffsetPreservation = .reset
         weekView.delegate = self
         weekView.eventStyleCallback = { (layer, data) in
@@ -44,6 +48,16 @@ class CalendarViewController: UIViewController, WeekViewDelegate {
             layer.borderColor = UIColor.black.cgColor
             layer.cornerRadius = 5.0
         }
+        // Date formats
+        weekView.dayLabelShortDateFormat = "dd EEEE"
+        weekView.dayLabelLongDateFormat = "dd EEEE"
+        weekView.dayLabelNormalDateFormat = "dd EEEE"
+
+        // Hour
+        weekView.hourLabelDateFormat = "hh a"
+
+        // Hour label position
+        weekView.hourLabelPosition = .middle
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -258,5 +272,20 @@ class CalendarViewController: UIViewController, WeekViewDelegate {
 
     func deleteEvents() {
         EventStorage.deleteEvents()
+    }
+
+    func dayRangeOf(weekOfYear: Int, for date: Date) -> Range<Date> {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.firstWeekday = 2
+        let year = calendar.component(.yearForWeekOfYear, from: date)
+        let startComponents = DateComponents(weekOfYear: weekOfYear, yearForWeekOfYear: year)
+        let startDate = calendar.date(from: startComponents)!
+        let endComponents = DateComponents(day: 7, second: -1)
+        let endDate = calendar.date(byAdding: endComponents, to: startDate)!
+        return startDate..<endDate
+    }
+
+    private func getWeek() -> Int {
+        return Calendar.current.component(.weekOfYear, from: Date())
     }
 }
