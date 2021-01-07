@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0613948789B25295EF217821E810297B /* HourSideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1845865320F239BF822A4EB9001757E3 /* HourSideBarView.swift */; };
+		20ABFFE425A6E25100497838 /* HourLabelPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ABFFE225A6E1AE00497838 /* HourLabelPosition.swift */; };
 		2C95CF224BF4F421B902958150136235 /* QVRWeekView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FA73E4E0ED538980A1A88471BAEE2707 /* QVRWeekView-dummy.m */; };
 		40C788E04FFFC87F7A0E4B24595D514D /* HourSideBarView.xib in Sources */ = {isa = PBXBuildFile; fileRef = 3F4FD9F89E282427B4A52E610ADBD0AE /* HourSideBarView.xib */; };
 		481B87FC7950CA624DBD439F847F9CF0 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B5A1AED38F0C72811BBF43ED58CEAA /* Util.swift */; };
@@ -54,6 +55,7 @@
 		17EDEADF7F010BE6F3CA2E50FFCA31C7 /* DateSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DateSupport.swift; sourceTree = "<group>"; };
 		1845865320F239BF822A4EB9001757E3 /* HourSideBarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HourSideBarView.swift; sourceTree = "<group>"; };
 		1A90E1003711789B3DAD51CEFF9E832D /* QVRWeekView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QVRWeekView-umbrella.h"; sourceTree = "<group>"; };
+		20ABFFE225A6E1AE00497838 /* HourLabelPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourLabelPosition.swift; sourceTree = "<group>"; };
 		243CB631399524B03CB20015ED8DC9F5 /* WeekView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = WeekView.xib; sourceTree = "<group>"; };
 		317A55D6F739CB5981B2176A49676CF3 /* Pods-QVRWeekView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QVRWeekView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		3CD3000ECFD29AD169047E65326C38F2 /* QVRWeekView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QVRWeekView-prefix.pch"; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				96B5A1AED38F0C72811BBF43ED58CEAA /* Util.swift */,
 				91FD8710214D579F00E2B165 /* HourLabel.swift */,
 				91B3C78F223A8132002FB46A /* ZoomOffsetPreservation.swift */,
+				20ABFFE225A6E1AE00497838 /* HourLabelPosition.swift */,
 			);
 			name = Common;
 			path = QVRWeekView/Classes/Common;
@@ -328,7 +331,7 @@
 						LastSwiftMigration = 1030;
 					};
 					8CE7256899A40CE9B63331170ABF9BAD = {
-						LastSwiftMigration = 1140;
+						LastSwiftMigration = 1160;
 					};
 				};
 			};
@@ -369,6 +372,7 @@
 				915055112312DBCB007859DD /* EventLayer.swift in Sources */,
 				92052C32E9D67B306AC7CC1FED69DE68 /* DayViewCell.swift in Sources */,
 				B5FBEC9184D5A7C69BF57767C681C964 /* EventData.swift in Sources */,
+				20ABFFE425A6E25100497838 /* HourLabelPosition.swift in Sources */,
 				DDC39793EC6E8E1CCEFF32568D42D0E0 /* EventView.xib in Sources */,
 				B697BC3781B37B2717DFC426F38DBA87 /* Extensions.swift in Sources */,
 				CBF44DF171C47742F0142CCC6903B2B4 /* FrameCalculator.swift in Sources */,
