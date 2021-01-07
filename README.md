@@ -153,6 +153,7 @@ Below is a table of all customizable properties of the `WeekView`
 | hourLabelTextColor:`UIColor`         | The text color of the hour labels. | `black #000` |
 | hourLabelMinimumFontSize:`CGFloat`      | The minimum day label font size. Used during automatic resizing. | `6` |
 | hourLabelDateFormat:`String`      | The date format used to display the hours in the side bar. | `HH` |
+| hourLabelPosition:`enum`      | Positino of hour label used to display the hours in the side bar. | `top` |
 | allDayEventHeight:`CGFloat`         | The height of an all day event. | `40` |
 | allDayEventVerticalSpacing:`CGFloat`    | The vertical spacing above and below an all day event. | `5` |
 | allDayEventsSpreadOnX:`Bool`    | When enabled, all day events are displayed next to each other, instead of above and below each other. | `true` |
