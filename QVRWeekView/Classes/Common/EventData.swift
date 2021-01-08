@@ -182,6 +182,14 @@ open class EventData: NSObject, NSCoding {
         return mainAttributedString
 
     }
+    
+    // Configures the gradient based on the provided color and given endColor.
+    public func configureGradientVertical(_ endColor: UIColor) {
+        let gradient = CAGradientLayer()
+        gradient.colors = [self.color.cgColor, endColor.cgColor]
+        gradient.locations = [0, 1]
+        self.gradientLayer = gradient
+    }
 
     // Configures the gradient based on the provided color and given endColor.
     public func configureGradient(_ endColor: UIColor) {
