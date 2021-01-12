@@ -92,6 +92,8 @@ struct LayoutDefaults {
     static let dayViewCellHeight = CGFloat(1400)
     // Test width of day view cells - WARNING: ONLY USED FOR FRAME CALCULATION
     static let dayViewCellWidth = CGFloat(200)
+    // Bounce day view on scroll
+    static let dayViewBounceOnScroll = true
     // Pattern of dashed separators in the day view cells
     static let mainSeparatorThickness = CGFloat(1)
     // Pattern of dashed separators in the day view cells
@@ -116,6 +118,8 @@ struct LayoutDefaults {
 
     // Color of the background (behind the day view cells)
     static let backgroundColor = UIColor(red: 202/255, green: 202/255, blue: 202/255, alpha: 1.0)
+    // Color of the background (Top left buffer)
+    static let topLeftBufferViewColor = UIColor.white
     // Color of the top bar (containing day labels)
     static let topBarColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1.0)
     // Color of the hour indicator displayed over the today day view cell.

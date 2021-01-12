@@ -137,6 +137,7 @@ Below is a table of all customizable properties of the `WeekView`
 | Property | Description | Default |
 | ------------- |:----------:|:-:|
 | mainBackgroundColor:`UIColor`       | The background color of the WeekView. | `dark grey: #cacaca` |
+| topLeftBufferViewColor:`UIColor`       | The background color of the Top Left Buffer View. | `white: #ffffff` |
 | defaultTopBarHeight:`CGFloat`     | The default height of the top bar containing the day labels. | `35` |
 | topBarColor:`UIColor`         | The color of the top bar containing the day labels. | `grey: #dcdcdc` |
 | sideBarWidth:`CGFloat`         | The width of the sidebar containing the hour labels. | `25` |
@@ -184,6 +185,7 @@ Below is a table of all customizable properties of the `WeekView`
 | dayViewCellInitialHeight:`CGFloat`         | Height for the day columns. This is the initial height for zoom scale = 1.0. | `1400` |
 | dayViewHourIndicatorColor:`UIColor`         | Color of the current hour indicator. | `very dark grey #5a5a5a` |
 | dayViewHourIndicatorThickness:`CGFloat`         | Thickness (or height) of the current hour indicator. | `3` |
+| dayViewBounceOnScroll:`Bool`         | Bounce while scrolling | `false` |
 | dayViewMainSeparatorColor:`UIColor`         | Color of the main hour separators in the day view cells. Main separators are full lines and not dashed. | `dark grey: #cacaca` |
 | dayViewMainSeparatorThickness:`CGFloat`         | Thickness of the main hour separators in the day view cells. Main separators are full lines and not dashed. | `1` |
 | dayViewDashedSeparatorColor:`UIColor`         | Color of the dashed/dotted hour separators in the day view cells. | `dark grey: #cacaca` |

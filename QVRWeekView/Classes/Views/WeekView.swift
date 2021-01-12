@@ -85,7 +85,12 @@ open class WeekView: UIView {
     // Background color of top bar containing day labels.
     @objc public var topBarColor: UIColor {
         get { self.topBarView.backgroundColor! }
-        set(color) { self.topLeftBufferView.backgroundColor = color; self.topBarView.backgroundColor = color }
+        set(color) { self.topBarView.backgroundColor = color }
+    }
+    // Background color of top left bar - buffer.
+    @objc public var topLeftBufferViewColor: UIColor {
+        get { self.topLeftBufferView.backgroundColor! }
+        set(color) { self.topLeftBufferView.backgroundColor = color }
     }
     // Color of the side bar containing hour labels.
     @objc public var sideBarColor: UIColor {
@@ -181,6 +186,12 @@ open class WeekView: UIView {
     @objc public var autoConvertAllDayEvents: Bool {
         get { self.dayScrollView.autoConvertLongEventsToAllDay }
         set(bool) { self.dayScrollView.autoConvertLongEventsToAllDay = bool }
+    }
+    // Day view - bounce on scroll.
+    @objc public var dayViewBounceOnScroll: Bool = LayoutDefaults.dayViewBounceOnScroll {
+        didSet {
+            self.updateBounceOnDayView()
+        }
     }
 
     // MARK: - PRIVATE VARIABLES -
@@ -500,6 +511,12 @@ open class WeekView: UIView {
     }
 
     // MARK: - PRIVATE/HELPER FUNCTIONS -
+    
+    private func updateBounceOnDayView() {
+        // Bounce
+        self.dayScrollView.bounces = self.dayViewBounceOnScroll
+        self.dayScrollView.dayCollectionView.bounces = self.dayViewBounceOnScroll
+    }
 
     /**
      Method updates hour side bar height and position constraints, topBar height and width, and top left buffer size.
