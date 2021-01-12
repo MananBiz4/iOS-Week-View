@@ -144,6 +144,54 @@ public extension WeekView {
     }
 
     /**
+     Left padding event layer.
+     */
+    @objc var eventLayerLeftPadding: CGFloat {
+        get {
+            return self.dayScrollView.dayViewCellLayout.eventLayerLeftPadding
+        }
+        set(padding) {
+            self.dayScrollView.dayViewCellLayout.eventLayerLeftPadding = padding
+        }
+    }
+    
+    /**
+     Top padding event layer.
+     */
+    @objc var eventLayerTopPadding: CGFloat {
+        get {
+            return self.dayScrollView.dayViewCellLayout.eventLayerTopPadding
+        }
+        set(padding) {
+            self.dayScrollView.dayViewCellLayout.eventLayerTopPadding = padding
+        }
+    }
+    
+    /**
+     Right padding event layer.
+     */
+    @objc var eventLayerRightPadding: CGFloat {
+        get {
+            return self.dayScrollView.dayViewCellLayout.eventLayerRightPadding
+        }
+        set(padding) {
+            self.dayScrollView.dayViewCellLayout.eventLayerRightPadding = padding
+        }
+    }
+    
+    /**
+     Bottom padding event layer.
+     */
+    @objc var eventLayerBottomPadding: CGFloat {
+        get {
+            return self.dayScrollView.dayViewCellLayout.eventLayerBottomPadding
+        }
+        set(padding) {
+            self.dayScrollView.dayViewCellLayout.eventLayerBottomPadding = padding
+        }
+    }
+    
+    /**
      Vertical padding of the text within event labels.
      */
     @objc var eventLabelVerticalTextPadding: CGFloat {

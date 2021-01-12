@@ -50,6 +50,14 @@ class DayViewCellLayout {
     var eventLabelHorizontalTextPadding: CGFloat = LayoutDefaults.eventLabelHorizontalTextPadding { didSet { update?() } }
     // Vertical padding of the text within event labels.
     var eventLabelVerticalTextPadding: CGFloat = LayoutDefaults.eventLabelVerticalTextPadding { didSet { update?() } }
+    // Left padding event layer.
+    var eventLayerLeftPadding: CGFloat = LayoutDefaults.eventLayerLeftPadding { didSet { update?() } }
+    // Top padding event layer.
+    var eventLayerTopPadding: CGFloat = LayoutDefaults.eventLayerTopPadding { didSet { update?() } }
+    // Right padding event layer.
+    var eventLayerRightPadding: CGFloat = LayoutDefaults.eventLayerRightPadding { didSet { update?() } }
+    // Bottom padding event layer.
+    var eventLayerBottomPadding: CGFloat = LayoutDefaults.eventLayerBottomPadding { didSet { update?() } }
     // Determines style the event layers
     var eventStyleCallback: EventStlyeCallback? { didSet { update?() } }
 

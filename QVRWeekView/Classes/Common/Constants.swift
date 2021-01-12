@@ -46,6 +46,15 @@ struct LayoutDefaults {
     static let eventLabelVerticalTextPadding = CGFloat(2)
     // Default event label position
     static let eventLabelPosition = EventLabelPosition.top
+    // Default left padding event layer
+    static let eventLayerLeftPadding = CGFloat(1.5)
+    // Default top padding event layer
+    static let eventLayerTopPadding = CGFloat(1.5)
+    // Default right padding event layer
+    static let eventLayerRightPadding = CGFloat(1.5)
+    // Default bottom padding event layer
+    static let eventLayerBottomPadding = CGFloat(1.5)
+    
 
     // Default text of preview event
     static let previewEventText = "New Item"

@@ -18,7 +18,7 @@ class EventLayer: CALayer {
         self.frame = frame
 
         // Configure gradient and colour layer
-        if let gradient = event.getGradientLayer(withFrame: frame) {
+        if let gradient = event.getGradientLayer(withFrame: getGradientFrame(for: frame, layout: layout)) {
             self.backgroundColor = UIColor.clear.cgColor
             self.addSublayer(gradient)
         } else {
@@ -60,11 +60,21 @@ class EventLayer: CALayer {
                 y: frame.origin.y + yPadding,
                 width: boundingRect?.size.width ?? frame.width - 2*xPadding,
                 height: boundingRect?.size.height ?? frame.height - 2*yPadding)
-            
+
             eventTextLayer.alignmentMode = .center
             eventTextLayer.position = CGPoint(x: bounds.midX, y: bounds.midY)
         }
         self.addSublayer(eventTextLayer)
+    }
+
+    private func getGradientFrame(for frame: CGRect, layout: DayViewCellLayout) -> CGRect {
+        var gradientFrame = frame
+        gradientFrame.origin.x += layout.eventLayerLeftPadding
+        gradientFrame.origin.y += layout.eventLayerTopPadding
+        gradientFrame.size.width -= (layout.eventLayerLeftPadding + layout.eventLayerRightPadding)
+        gradientFrame.size.height -= (layout.eventLayerTopPadding + layout.eventLayerBottomPadding)
+
+        return gradientFrame
     }
 
     required init?(coder aDecoder: NSCoder) {

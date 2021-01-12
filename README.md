@@ -165,6 +165,10 @@ Below is a table of all customizable properties of the `WeekView`
 | eventLabelTextColor:`UIColor`         | The color of the text inside events. | `white #fff` |
 | eventLabelHorizontalTextPadding:`CGFloat`         | Horizontal padding of the text within event labels. | `2` |
 | eventLabelVerticalTextPadding:`CGFloat`         | Vertical padding of the text within event labels. | `2` |
+| eventLayerLeftPadding:`CGFloat`         | Default left padding event layer. | `1.5` |
+| eventLayerTopPadding:`CGFloat`         | Default top padding event layer. | `1.5` |
+| eventLayerRightPadding:`CGFloat`         | Default right padding event layer. | `1.5` |
+| eventLayerBottomPadding:`CGFloat`         | Default bottom padding event layer. | `1.5` |
 | eventStyleCallback:`(CALayer, EventData?) -> Void` | Use this callback to customise an Event layer any way you want. The EventData will be nil if it is the Preview Event layer that is being rendered. Example usage in CalendarViewController. | `nil` |
 | previewEventText:`String`         | The text shown inside the preview event. | `New Event` |
 | previewEventColor:`UIColor`         | The color of the preview event. | `random color` |
