@@ -258,6 +258,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, DayViewCellDelegate, Frame
             if let eventDataForCell = eventsData[dayDateForCell], let eventFramesForCell = eventFrames[dayDateForCell] {
                 dayViewCell.setEventsData(eventDataForCell, andFrames: eventFramesForCell)
             }
+            dayViewCell.setNeedsLayout()
             return dayViewCell
         }
         return UICollectionViewCell(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
