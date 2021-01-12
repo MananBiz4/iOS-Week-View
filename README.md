@@ -191,6 +191,7 @@ Below is a table of all customizable properties of the `WeekView`
 | dayViewDashedSeparatorColor:`UIColor`         | Color of the dashed/dotted hour separators in the day view cells. | `dark grey: #cacaca` |
 | dayViewDashedSeparatorThickness:`CGFloat`         | Thickness of the dashed/dotted hour separators in the day view cells. | `1` |
 | dayViewDashedSeparatorPattern:`[NSNumber]`         | Sets the pattern for the dashed/dotted hour separators. Requires an array of NSNumbers. Example 1: (10, 5) will set a pattern of 10 points drawn, 5 points empty, repeated. Example 2: (3, 4, 9, 2) will set a pattern of 4 points drawn, 4 points empty, 9 points drawn, 2 points empty, repeated. See [Apple API](https://developer.apple.com/documentation/quartzcore/cashapelayer/1521921-linedashpattern) for additional information on pattern drawing. | `[3, 1]` |
+| dayViewInsets:`UIEdgeInsets`         | Amount of spacing for Top, Left, Bottom, Right |  `UIEdgeInsets.zero` |
 | portraitDayViewSideSpacing:`CGFloat`         | Amount of spacing in between day columns when in portrait mode. |  `5` |
 | landscapeDayViewSideSpacing:`CGFloat`         | Amount of spacing in between day columns when in landscape mode. | `1` |
 | portraitDayViewVerticalSpacing:`CGFloat`         | Amount of spacing above and below day columns when in portrait mode. | `15` |

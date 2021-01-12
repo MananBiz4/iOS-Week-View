@@ -73,6 +73,9 @@ struct LayoutDefaults {
     static let defaultTopBarHeight = CGFloat(35)
     static let sideBarWidth = CGFloat(25)
 
+    // Spacing on day view Top, Left, Bottom, Right
+    static let dayViewInsets = UIEdgeInsets.zero
+
     // Horizontal spacing of day view cells
     static let portraitDayViewHorizontalSpacing = CGFloat(5)
     static let landscapeDayViewHorizontalSpacing = CGFloat(1)

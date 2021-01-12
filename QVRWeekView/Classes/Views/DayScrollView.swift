@@ -35,6 +35,8 @@ UICollectionViewDelegate, UICollectionViewDataSource, DayViewCellDelegate, Frame
     var visibleDaysInPortraitMode: CGFloat = LayoutDefaults.visibleDaysPortrait { didSet { updateLayout() } }
     // Number of visible days when in landscape mode.
     var visibleDaysInLandscapeMode: CGFloat = LayoutDefaults.visibleDaysLandscape { didSet { updateLayout() } }
+    // Amount of spacing for Top, Left, Bottom, Right
+    var dayViewInsets = LayoutDefaults.dayViewInsets { didSet { updateLayout() } }
     // Width of spacing between day columns in portrait mode
     var portraitDayViewHorizontalSpacing = LayoutDefaults.portraitDayViewHorizontalSpacing { didSet { updateLayout() } }
     // Width of spacing between day columns in landscape mode
@@ -157,6 +159,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, DayViewCellDelegate, Frame
         let flowLayout = DayCollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: self.dayViewCellWidth, height: self.dayViewCellHeight)
         flowLayout.minimumLineSpacing = self.dayViewHorizontalSpacing
+        flowLayout.sectionInset = self.dayViewInsets
         flowLayout.velocityMultiplier = self.velocityOffsetMultiplier
         dayCollectionView = DayCollectionView(frame: CGRect(x: 0,
                                                             y: 0,
@@ -563,6 +566,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, DayViewCellDelegate, Frame
         if let flowLayout = dayCollectionView.collectionViewLayout as? DayCollectionViewFlowLayout {
             flowLayout.itemSize = CGSize(width: self.dayViewCellWidth, height: self.dayViewCellHeight)
             flowLayout.minimumLineSpacing = self.dayViewHorizontalSpacing
+            flowLayout.sectionInset = self.dayViewInsets
             flowLayout.velocityMultiplier = self.velocityOffsetMultiplier
         }
     }

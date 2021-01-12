@@ -34,6 +34,18 @@ public extension WeekView {
             self.dayScrollView.visibleDaysInLandscapeMode = CGFloat(days)
         }
     }
+    
+    /**
+     Amount of spacing in between day view cells when in portrait mode.
+     */
+    @objc var dayViewInsets: UIEdgeInsets {
+        get {
+            return self.dayScrollView.dayViewInsets
+        }
+        set(insets) {
+            self.dayScrollView.dayViewInsets = insets
+        }
+    }
 
     /**
      Amount of spacing in between day view cells when in portrait mode.
