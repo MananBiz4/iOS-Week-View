@@ -30,7 +30,7 @@ open class EventData: NSObject, NSCoding {
     private(set) var gradientLayer: CAGradientLayer? { didSet { gradientLayer = oldValue ?? gradientLayer } }
     // Position of the event text
     public let position: EventLabelPosition
-    public let hideOnScale: Bool = false
+    public var hideOnScale: Bool = false
     // String descriptor
     override public var description: String {
         return "[Event: {id: \(id), startDate: \(startDate), endDate: \(endDate)}]\n"
