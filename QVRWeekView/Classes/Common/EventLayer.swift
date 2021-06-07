@@ -78,7 +78,7 @@ class EventLayer: CALayer {
             eventTextLayer.alignmentMode = .center
             eventTextLayer.position = CGPoint(x: bounds.midX, y: bounds.midY)
             if event.hideOnScale {
-                eventTextLayer.isHidden = boundingSize.height < boundingRect.height
+                eventTextLayer.isHidden = frame.height < boundingRect.height
             }
         }
         self.addSublayer(eventTextLayer)
