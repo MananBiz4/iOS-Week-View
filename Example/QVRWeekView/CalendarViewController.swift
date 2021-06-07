@@ -43,11 +43,6 @@ class CalendarViewController: UIViewController, WeekViewDelegate {
         weekView.visibleDaysInPortraitMode = 3
         weekView.zoomOffsetPreservation = .reset
         weekView.delegate = self
-        weekView.eventStyleCallback = { (layer, data) in
-            layer.borderWidth = 2.0
-            layer.borderColor = UIColor.black.cgColor
-            layer.cornerRadius = 5.0
-        }
         // Date formats
         weekView.dayLabelShortDateFormat = "dd EEEE"
         weekView.dayLabelLongDateFormat = "dd EEEE"
@@ -58,15 +53,60 @@ class CalendarViewController: UIViewController, WeekViewDelegate {
 
         // Hour label position
         weekView.hourLabelPosition = .middle
+        weekView.portraitDayViewVerticalSpacing = 0
+        
+        weekView.dayViewCellInitialHeight = weekView.bounds.height
+        weekView.portraitDayViewSideSpacing = 1.0
+        weekView.sideBarWidth = 50.0
+        weekView.dayViewDashedSeparatorColor = .clear
+        weekView.dayViewDashedSeparatorThickness = 0.0
+        weekView.dayViewDashedSeparatorPattern = [0, 0]
+        weekView.showPreviewOnLongPress = false
+        weekView.dayViewBounceOnScroll = false
+        weekView.topLeftBufferViewColor = .white
+        weekView.minimumZoomScale = 1.0
+        weekView.maximumZoomScale = 2.0
+        weekView.currentZoomScale = 1.0
+//        weekView.dayViewInsets = UIEdgeInsets(top: 0.0, left: 10.0, bottom: 0.0, right: 1.0)
+        addManualEvent()
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        weekView.currentZoomScale = 0.75
+//        weekView.currentZoomScale = 0.75
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    func addManualEvent() {
+        //        ▿ 2021-01-04 09:15:00 +0000
+        
+        let startString = "2021-01-12 13:00:00"
+//        let startString = "2021-01-11T12:00:00Z"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        guard let startDate = dateFormatter.date(from: startString) else {
+            return
+        }
+        let endDate = startDate.addingTimeInterval(60*60*3)
+
+        let newEvent = EventData(
+            id: self.id,
+            startDate: startDate,
+            endDate: endDate,
+            color: UIColor(red: CGFloat(1.0),
+                           green: CGFloat(0.60),
+                           blue: CGFloat(0.76),
+                           alpha: 1.0),
+            eventPosition: .middle
+        )
+
+        newEvent.configureGradientVertical(UIColor(red: CGFloat(0.90), green: CGFloat(0.31), blue: CGFloat(0.55), alpha: 1.0))
+
+        self.allEvents[self.id] = newEvent
+        weekView.loadEvents(withData: Array(self.allEvents.values))
     }
 
     func didLongPressDayView(in weekView: WeekView, atDate date: Date) {

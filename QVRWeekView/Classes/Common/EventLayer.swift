@@ -35,34 +35,51 @@ class EventLayer: CALayer {
 
         switch event.position {
         case .top:
-            eventTextLayer.string = event.getDisplayString(withMainFont: layout.eventLabelFont,
-                                                           infoFont: layout.eventLabelInfoFont,
-                                                           andColor: layout.eventLabelTextColor)
-
+//            if frame.height - 2*yPadding
+            let attributedString = event.getDisplayString(
+                withMainFont: layout.eventLabelFont,
+                infoFont: layout.eventLabelInfoFont,
+                andColor: layout.eventLabelTextColor
+            )
+            eventTextLayer.string = attributedString
+            let boundingSize = CGSize(
+                width: frame.width - 2 * xPadding,
+                height: frame.height - 2 * yPadding
+            )
             eventTextLayer.frame = CGRect(x: frame.origin.x + xPadding,
                                           y: frame.origin.y + yPadding,
-                                          width: frame.width - 2*xPadding,
-                                          height: frame.height - 2*yPadding)
+                                          width: boundingSize.width,
+                                          height: boundingSize.height)
 
+            let boundingRect = attributedString.boundingRect(with: CGSize(width: boundingSize.width, height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, context: nil)
+            if event.hideOnScale {
+                eventTextLayer.isHidden = boundingSize.height < boundingRect.height
+            }
         case .middle:
-            eventTextLayer.string = event.getDisplayRangeString(withFont: layout.eventLabelInfoFont,
-                                                                andColor: layout.eventLabelTextColor)
+            let attributedString = event.getDisplayRangeString(
+                withFont: layout.eventLabelInfoFont,
+                andColor: layout.eventLabelTextColor
+            )
+            eventTextLayer.string = attributedString
 
             let boundingSize = CGSize(
                 width: frame.width - 2 * xPadding,
                 height: frame.height - 2 * yPadding
             )
 
-            let boundingRect = (eventTextLayer.string as? NSAttributedString)?.boundingRect(with: boundingSize, options: .usesLineFragmentOrigin, context: nil)
+            let boundingRect = attributedString.boundingRect(with: CGSize(width: boundingSize.width, height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, context: nil)
 
             eventTextLayer.frame = CGRect(
                 x: frame.origin.x + xPadding,
                 y: frame.origin.y + yPadding,
-                width: boundingRect?.size.width ?? frame.width - 2*xPadding,
-                height: boundingRect?.size.height ?? frame.height - 2*yPadding)
+                width: boundingSize.width,
+                height: boundingSize.height)
 
             eventTextLayer.alignmentMode = .center
             eventTextLayer.position = CGPoint(x: bounds.midX, y: bounds.midY)
+            if event.hideOnScale {
+                eventTextLayer.isHidden = boundingSize.height < boundingRect.height
+            }
         }
         self.addSublayer(eventTextLayer)
     }
