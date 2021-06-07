@@ -157,7 +157,7 @@ class CalendarViewController: UIViewController, WeekViewDelegate {
                                      startDate: date,
                                      endDate: date.addingTimeInterval(60*60*4),
                                      location: "loc test",
-                                     color: color)
+                                     color: color, allDay: false, eventPosition: .middle, hideOnScale: true)
             self.allEvents[self.id] = newEvent
             self.id += 1
             weekView.loadEvents(withData: Array(self.allEvents.values))

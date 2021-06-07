@@ -72,8 +72,8 @@ class EventLayer: CALayer {
             eventTextLayer.frame = CGRect(
                 x: frame.origin.x + xPadding,
                 y: frame.origin.y + yPadding,
-                width: boundingSize.width,
-                height: boundingSize.height)
+                width: boundingRect.width,
+                height: boundingRect.height)
 
             eventTextLayer.alignmentMode = .center
             eventTextLayer.position = CGPoint(x: bounds.midX, y: bounds.midY)

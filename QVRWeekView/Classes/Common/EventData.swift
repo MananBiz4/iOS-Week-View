@@ -30,7 +30,7 @@ open class EventData: NSObject, NSCoding {
     private(set) var gradientLayer: CAGradientLayer? { didSet { gradientLayer = oldValue ?? gradientLayer } }
     // Position of the event text
     public let position: EventLabelPosition
-    public var hideOnScale: Bool = false
+    public let hideOnScale: Bool
     // String descriptor
     override public var description: String {
         return "[Event: {id: \(id), startDate: \(startDate), endDate: \(endDate)}]\n"
@@ -39,13 +39,14 @@ open class EventData: NSObject, NSCoding {
     /**
      Main initializer. All properties.
      */
-    public init(id: String, title: String, startDate: Date, endDate: Date, location: String, color: UIColor, allDay: Bool, gradientLayer: CAGradientLayer? = nil, eventPosition: EventLabelPosition = .top) {
+    public init(id: String, title: String, startDate: Date, endDate: Date, location: String, color: UIColor, allDay: Bool, gradientLayer: CAGradientLayer? = nil, eventPosition: EventLabelPosition = .top, hideOnScale: Bool = false) {
         self.id = id
         self.title = title
         self.location = location
         self.color = color
         self.allDay = allDay
         self.position = eventPosition
+        self.hideOnScale = hideOnScale
         guard startDate.compare(endDate).rawValue <= 0 else {
             self.startDate = startDate
             self.endDate = startDate
@@ -61,8 +62,8 @@ open class EventData: NSObject, NSCoding {
     /**
      Convenience initializer. All properties except for Int Id instead of String.
      */
-    public convenience init(id: Int, title: String, startDate: Date, endDate: Date, location: String, color: UIColor, allDay: Bool, eventPosition: EventLabelPosition = .top) {
-        self.init(id: String(id), title: title, startDate: startDate, endDate: endDate, location: location, color: color, allDay: allDay, eventPosition: eventPosition)
+    public convenience init(id: Int, title: String, startDate: Date, endDate: Date, location: String, color: UIColor, allDay: Bool, eventPosition: EventLabelPosition = .top, hideOnScale: Bool = false) {
+        self.init(id: String(id), title: title, startDate: startDate, endDate: endDate, location: location, color: color, allDay: allDay, eventPosition: eventPosition, hideOnScale: hideOnScale)
     }
 
     /**
@@ -117,8 +118,8 @@ open class EventData: NSObject, NSCoding {
     /**
      Convenience initializer. Without title and location, All day - false.
      */
-    public convenience init(id: Int, startDate: Date, endDate: Date, color: UIColor, eventPosition: EventLabelPosition) {
-        self.init(id: id, title: "", startDate: startDate, endDate: endDate, location: "", color: color, allDay: false, eventPosition: eventPosition)
+    public convenience init(id: Int, startDate: Date, endDate: Date, color: UIColor, eventPosition: EventLabelPosition, hideOnScale: Bool = false) {
+        self.init(id: id, title: "", startDate: startDate, endDate: endDate, location: "", color: color, allDay: false, eventPosition: eventPosition, hideOnScale: hideOnScale)
     }
 
     public func encode(with coder: NSCoder) {
@@ -131,6 +132,7 @@ open class EventData: NSObject, NSCoding {
         coder.encode(allDay, forKey: EventDataEncoderKey.allDay)
         coder.encode(gradientLayer, forKey: EventDataEncoderKey.gradientLayer)
         coder.encode(position, forKey: EventDataEncoderKey.eventPosition)
+        coder.encode(hideOnScale, forKey: EventDataEncoderKey.hideOnScale)
     }
 
     public required convenience init?(coder: NSCoder) {
@@ -140,7 +142,10 @@ open class EventData: NSObject, NSCoding {
             let dEndDate = coder.decodeObject(forKey: EventDataEncoderKey.endDate) as? Date,
             let dLocation = coder.decodeObject(forKey: EventDataEncoderKey.location) as? String,
             let dColor = coder.decodeObject(forKey: EventDataEncoderKey.color) as? UIColor,
-            let dPosition = coder.decodeObject(forKey: EventDataEncoderKey.eventPosition) as? EventLabelPosition {
+            let dPosition = coder.decodeObject(forKey: EventDataEncoderKey.eventPosition) as? EventLabelPosition ,
+            let hideOnScale = coder
+                .decodeObject(forKey: EventDataEncoderKey.hideOnScale) as? Bool
+        {
                 let dGradientLayer = coder.decodeObject(forKey: EventDataEncoderKey.gradientLayer) as? CAGradientLayer
                 let dAllDay = coder.decodeBool(forKey: EventDataEncoderKey.allDay)
                 self.init(id: dId,
@@ -151,7 +156,8 @@ open class EventData: NSObject, NSCoding {
                           color: dColor,
                           allDay: dAllDay,
                           gradientLayer: dGradientLayer,
-                          eventPosition: dPosition
+                          eventPosition: dPosition,
+                          hideOnScale: hideOnScale
             )
         } else {
             return nil
@@ -331,4 +337,5 @@ struct EventDataEncoderKey {
     static let allDay = "EVENT_DATA_ALL_DAY"
     static let gradientLayer = "EVENT_DATA_GRADIENT_LAYER"
     static let eventPosition = "EVENT_DATA_Position"
+    static let hideOnScale = "EVENT_HIDE_ON_SCALE"
 }
